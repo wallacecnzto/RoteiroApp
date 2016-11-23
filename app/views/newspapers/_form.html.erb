@@ -1,0 +1,33 @@
+<%= form_for(@newspaper) do |f| %>
+  <% if @newspaper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@newspaper.errors.count, "error") %> prohibited this newspaper from being saved:</h2>
+
+      <ul>
+      <% @newspaper.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address %><br>
+    <%= f.text_area :address, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class:"form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

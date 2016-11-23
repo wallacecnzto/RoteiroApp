@@ -1,0 +1,43 @@
+<div class="container">
+<br>
+<div class="jumbotron">
+  <p id="notice"><%= notice %></p>
+  <%= link_to t('buttons.home'), root_path, class: 'btn btn-default pull-right' %>
+  <h1>Listando Roteiro</h1>
+  <h3><%= Time.now.strftime("%d/%m/%Y") %></h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr class="active">
+        <th><%= @newspapers.model.human_attribute_name("name") %></th>
+        <th><%= @newspapers.model.human_attribute_name("address") %></th>
+        <th><%= @newspapers.model.human_attribute_name("amount") %></th>
+        <th><%= @newspapers.model.human_attribute_name("description") %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @newspapers.each do |newspaper| %>
+      <tr>
+        <td><%= newspaper.name %></td>
+        <td><%= newspaper.address %></td>
+        <td><%= newspaper.amount %></td>
+        <td><%= newspaper.description %></td>
+        <div class="btn-group btn-group-justified">
+          <td><%= link_to t('buttons.show'), newspaper, class: 'btn btn-info btn-xs' %></td>
+          <td><%= link_to t('buttons.edit'), edit_newspaper_path(newspaper), class: 'btn btn-warning btn-xs' %></td>
+          <td><%= link_to t('buttons.destroy'), newspaper, method: :delete, data: { confirm: t('messages.confirm') }, class: 'btn btn-danger btn-xs' %></td>
+        </div>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= paginate @newspapers %>
+
+  <br>
+
+  <%= link_to t('buttons.new'), new_newspaper_path, class: 'btn btn-primary' %>
+</div>
+</div>

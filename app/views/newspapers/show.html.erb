@@ -1,0 +1,33 @@
+<div class="container">
+<br>
+    <div class="jumbotron">
+
+        <p id="notice"><%= notice %></p>
+
+        <p>
+          <strong><%= Newspaper.human_attribute_name("name") %>:</strong>
+          <%= @newspaper.name %>
+        </p>
+
+        <p>
+          <strong><%= Newspaper.human_attribute_name("address") %>:</strong>
+          <%= @newspaper.address %>
+        </p>
+
+        <p>
+          <strong><%= Newspaper.human_attribute_name("amount") %>:</strong>
+          <%= @newspaper.amount %>
+        </p>
+
+        <p>
+          <strong><%= Newspaper.human_attribute_name("description") %>:</strong>
+          <%= @newspaper.description %>
+        </p>
+
+    </div>
+
+
+<%= link_to t('buttons.edit'), edit_newspaper_path(@newspaper), class:'btn btn-primary' %>
+<%= link_to t('buttons.back'), newspapers_path, class:'btn btn-default' %>
+
+</div>
